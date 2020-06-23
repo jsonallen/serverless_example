@@ -1,0 +1,15 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Target URL",
+    "required": ["url"],
+    "properties": {
+      "url": {
+        "type": "string",
+        "title": "The URL Schema",
+        "default": "",
+        "pattern": "^.*$"
+      }
+    }
+  }

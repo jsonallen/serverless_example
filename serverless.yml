@@ -1,0 +1,31 @@
+service: urlscan-demo
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+plugins:
+  - serverless-python-requirements
+  - serverless-ssm-fetch
+provider:
+  name: aws
+  runtime: python3.8 
+
+functions:
+  query:
+    handler: handler.query
+    events:
+      - http:
+          path: query
+          method: get
+  submit:
+    handler: handler.submit
+    events:
+      - http:
+          path: submit
+          method: post
+          request:
+            schema:
+              application/json: ${file(submit.json)}
+custom:
+  serverlessSsmFetch:
+    api_key: /dev/urlscanio_key
+
